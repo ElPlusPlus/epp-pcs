@@ -2,14 +2,14 @@ from typing import List
 
 
 def decode_registers_to_chars(registers: List[int]) -> str:
-    """Convert registers to ASCII string, removing null bytes"""
+    """Convert registers to ASCII string, keeping only printable characters"""
     result = ''
     for register in registers:
         high_byte = register >> 8
         low_byte = register & 0xFF
-        if high_byte != 0:
+        if 0x20 <= high_byte <= 0x7E:
             result += chr(high_byte)
-        if low_byte != 0:
+        if 0x20 <= low_byte <= 0x7E:
             result += chr(low_byte)
     return result.strip()
 
