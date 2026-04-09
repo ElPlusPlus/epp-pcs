@@ -1,0 +1,44 @@
+name: Publish Python Package to GitHub Packages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Configure Poetry for GitHub Packages
+        run: |
+          # URL for installing packages
+          poetry config repositories.github https://ElPlusPlus.pkg.github.com
+          
+          # URL for publishing packages
+          poetry config repositories.github-publish https://upload.pypi.github.com/
+          
+          # Authenticate: NOTE repository name matches -r argument
+          poetry config http-basic.github ${{ github.actor }} ${{ secrets.GITHUB_TOKEN }}
+          poetry config http-basic.github-publish ${{ github.actor }} ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build package
+        run: poetry build
+
+      - name: Publish package
+        run: |
+          rm -rf dist/
+          poetry publish -r github-publish --build --no-interaction
