@@ -12,8 +12,8 @@ import logging
 
 from pyepppcs.defination import modbus_map
 from pyepppcs.defination.register_names import *
-from pysolinteg.defination.models import Result, ModbusType, ModbusAccess
-from pysolinteg.utils import (
+from pyepppcs.defination.models import Result, ModbusType, ModbusAccess
+from pyepppcs.utils import (
     convert_to_s16, convert_to_s32, convert_to_u32,
     decode_registers_to_chars, encode_string_to_registers,
     split_s32_to_registers, split_u32_to_registers,
