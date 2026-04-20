@@ -66,6 +66,8 @@ def fmt_value(reg_name, value, lookup):
     if lookup and value in lookup:
         return f"{lookup[value]} ({value})"
     unit = UNITS.get(reg_name, "")
+    if isinstance(value, float):
+        value = f"{value:.2f}"
     if unit:
         return f"{value} {unit}"
     return str(value)
