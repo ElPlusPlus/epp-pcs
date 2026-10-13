@@ -1,0 +1,130 @@
+Address,Count,Register name,Item (protocol V1.22),Data type,Access,Unit,Gain,Note
+0x0103,1,OffGridFrequency,Off-grid frequency setting,I16,RW,Hz,0.01,
+0x0189,1,PowerFactorA,A-phase power factor,I16,RO,,0.01,
+0x018A,1,PowerFactorB,B-phase power factor,I16,RO,,0.01,
+0x018B,1,PowerFactorC,C-phase power factor,I16,RO,,0.01,
+0x0291,1,PowerOnOff,Power-on/power-off instruction,I16,RW,,1,Write 1 on; write 0 off
+0x02A6,1,SetPhaseAActivePower,A-phase active power setting,I16,RW,kW,0.1,
+0x02A7,1,SetPhaseAReactivePower,A-phase reactive power setting,I16,RW,kvar,0.1,
+0x02A8,1,SetPhaseBActivePower,B-phase active power setting,I16,RW,kW,0.1,
+0x02A9,1,SetPhaseBReactivePower,B-phase reactive power setting,I16,RW,kvar,0.1,
+0x02AA,1,SetPhaseCActivePower,C-phase active power setting,I16,RW,kW,0.1,
+0x02AB,1,SetPhaseCReactivePower,C-phase reactive power setting,I16,RW,kvar,0.1,
+0x0900,1,InsulationDetectionEnable,Insulation detection enabled,I16,RW,,1,Write 1 to start detection; auto-resets (software >= 5.13.0)
+0x0913,1,InsulationRx,Insulation detection value Rx,U16,RO,kΩ,1,
+0x0914,1,InsulationRy,Insulation detection value Ry,U16,RO,kΩ,1,
+0x0D10,1,BusVoltage,Bus voltage setting,U16,RW,V,0.1,"DC voltage source mode, single module"
+0x0D16,1,DcSourceBusVoltage,DC source bus voltage setting,U16,RW,V,0.1,"DC voltage source mode, parallel operation"
+0x0D57,1,SetActivePower,Set the active charge/discharge power,I16,RW,kW,0.1,Positive = discharge; negative = charge (e.g. -200 = 20 kW charge)
+0x0D58,1,SetReactivePower,Reactive power compensation setting,I16,RW,kvar,0.1,Positive = inductive; negative = capacitive
+0x1004,1,HmiModbusBaudRate,HMIModbus baud rate,U16,RW,,1,96 = 9600 baud
+0x1007,1,RemodbusBaudRate,ReModbus baud rate,U16,RW,,1,96 = 9600 baud
+0x1010,1,RemodbusAddress,ReModbus address,U16,RW,,1,
+0x1011,1,HmiModbusAddress,HMIModbus address,U16,RW,,1,
+0x1020,1,TimeYear,Year,U16,WO,,1,PCS timing; interval at least 1 minute
+0x1021,1,TimeMonth,Month,U16,WO,,1,PCS timing; interval at least 1 minute
+0x1022,1,TimeDay,Day,U16,WO,,1,PCS timing; interval at least 1 minute
+0x1023,1,TimeHour,Hour,U16,WO,,1,PCS timing; interval at least 1 minute
+0x1024,1,TimeMinute,Minute,U16,WO,,1,PCS timing; interval at least 1 minute
+0x1025,1,TimeSecond,Second,U16,WO,,1,PCS timing; interval at least 1 minute
+0x1400,1,FaultReset,Fault reset instruction,U16,RW,,1,Set Bit15 (0x8000) in off state
+0x1405,1,CureParameter,Cure parameter instruction,U16,RW,,1,Write 0x0100 in off state; Bit8 auto-clears; one time only
+0x1600,1,AcOvervoltageProtection,AC line voltage overvoltage protection point,U16,RW,V,0.1,
+0x1601,1,AcUndervoltageProtection,AC line voltage undervoltage protection point,U16,RW,V,0.1,
+0x1603,1,AcOvercurrentProtection,AC overcurrent protection point,U16,RW,A,0.1,
+0x1604,1,GridOverfreqProtection,Grid overfrequency protection,U16,RW,Hz,0.01,
+0x1605,1,GridUnderfreqProtection,Grid underfrequency protection,U16,RW,Hz,0.01,
+0x1611,1,BusbarOvervoltageProtection,Busbar overvoltage protection point,U16,RW,V,0.1,
+0x1612,1,BusbarUndervoltageProtection,Busbar undervoltage protection point,U16,RW,V,0.1,
+0x1620,1,OvertemperatureProtection,Module overtemperature protection point,U16,RW,℃,0.1,
+0x1631,1,IslandOverfreqProtection,Island overfrequency protection,U16,RW,Hz,0.01,
+0x1632,1,IslandUnderfreqProtection,Island underfrequency protection,U16,RW,Hz,0.01,
+0x1633,1,BatteryOvervoltageProtection,Battery overvoltage protection point,U16,RW,V,0.1,
+0x1634,1,BatteryUndervoltageProtection,Battery undervoltage protection point,U16,RW,V,0.1,
+0x163F,1,MaxChargeCurrentBattery,Maximum charge current limit on the battery side,I16,RW,A,0.1,
+0x1640,1,MaxDischargeCurrentBattery,Maximum discharge current limit on the battery side,I16,RW,A,0.1,
+0x1641,1,DcOvercurrentProtection,DC overcurrent protection point,U16,RW,A,0.1,
+0x1643,1,CcCvBatteryVoltage,Constant current constant voltage battery voltage point,U16,RW,V,0.1,
+0x1644,1,ConstantVoltageCharging,Battery constant voltage charging voltage,U16,RW,V,0.1,
+0x1648,1,EmsCommTimeout,EMS (BMS) communication failure time threshold,U16,RW,s,1,
+0x1650,1,MaxCvTime,Maximum time limit for constant voltage charging,U16,RW,min,0.1,
+0x1651,1,CvToFloatCurrent,Constant voltage to float charging current point,U16,RW,A,0.1,
+0x1653,1,FloatChargeVoltage,Battery float charge voltage point,U16,RW,V,0.1,
+0x1654,1,FloatToCcCurrent,Float charge to constant current point,U16,RW,A,0.1,
+0x1700,1,HwFaultWord1,Hardware fault word 1,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x1701,1,HwFaultWord2,Hardware fault word 2,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x1702,1,GridFaultWord,Grid fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x1703,1,BusFaultWord,Bus fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x1704,1,AcCapFaultWord,AC capacitor fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x1705,1,SystemFaultWord,System fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x1706,1,SwitchFaultWord,Switch fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x1707,1,OtherFaultWord,Other fault words,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x2227,1,OffGridVoltage,Off-grid voltage setting,I16,RW,,1,4096 = 400 V line voltage; 3891 = 380 V
+0x501B,1,OperationMode,Module operation mode setting,U16,RW,,1,1 current source; 0 DC voltage source
+0x5021,1,ParallelModuleCount,Number of parallel modules,U16,RW,,1,
+0x5054,1,CurrentSourceParallelEnable,Module current source parallel enable,U16,RW,,1,1 enabled; 0 disabled (default)
+0x5060,1,SinglePhasePowerControl,Grid-connected single-phase power independent control,U16,RW,,1,1 single-phase power control; 0 total power control (default)
+0x5066,1,OffGridMode,Off-grid mode setting,U16,RW,,1,1 off-grid enabled; 0 grid-connected
+0x5068,1,ModuleHost,Module host setting,U16,RW,,1,1 host; 0 slave
+0x506A,1,DehumidificationEnable,PCS dehumidification enabled,U16,RW,,1,1 enabled; 0 disabled (default)
+0x5078,1,MaxChargePower,Maximum charge power,I16,RW,kW,0.1,
+0x5079,1,MaxDischargePower,Maximum discharge power,I16,RW,kW,0.1,
+0x508C,1,ChargeReset,Charge reset command,U16,RW,,1,Write 1 to clear charge (off state)
+0x508D,1,SafetyOneKey,Safety one key set interface,U16,RW,,1,Reserved
+0x6000,1,DspVersionV,DSP version V,U16,RO,,1,
+0x6001,1,DspVersionB,DSP version B,U16,RO,,1,
+0x6002,1,DspVersionD,DSP version D,U16,RO,,1,
+0x6003,1,CpldVersionV,CPLD version V,U16,RO,,1,
+0x6004,1,CpldVersionB,CPLD version B,U16,RO,,1,
+0x6005,1,CpldVersionD,CPLD version D,U16,RO,,1,
+0x6010,2,DcHistoryCharge,DC history charge amount,U32,RO,kWh,1,High word first
+0x6012,2,DcDailyCharge,DC daily charge amount,U32,RO,kWh,1,High word first
+0x6014,2,DcHistoryDischarge,DC history discharge amount,U32,RO,kWh,1,High word first
+0x6016,2,DcDailyDischarge,DC daily discharge amount,U32,RO,kWh,1,High word first
+0x6018,2,AcHistoryCharge,AC historical charge amount,U32,RO,kWh,1,High word first
+0x601A,2,AcDailyCharge,AC daily charge amount,U32,RO,kWh,1,High word first
+0x601C,2,AcHistoryDischarge,AC historical discharge amount,U32,RO,kWh,1,High word first
+0x601E,2,AcDailyDischarge,AC daily discharge amount,U32,RO,kWh,1,High word first
+0x6020,1,OutputVoltageAB,Output AB line voltage,I16,RO,V,0.1,
+0x6021,1,OutputVoltageBC,Output BC line voltage,I16,RO,V,0.1,
+0x6022,1,OutputVoltageCA,Output CA line voltage,I16,RO,V,0.1,
+0x6023,1,OutputVoltageA,Output A-phase voltage,I16,RO,V,0.1,
+0x6024,1,OutputVoltageB,Output B-phase voltage,I16,RO,V,0.1,
+0x6025,1,OutputVoltageC,Output C-phase voltage,I16,RO,V,0.1,
+0x6026,1,OutputCurrentA,Output A-phase current,I16,RO,A,0.1,
+0x6027,1,OutputCurrentB,Output B-phase current,I16,RO,A,0.1,
+0x6028,1,OutputCurrentC,Output C-phase current,I16,RO,A,0.1,
+0x6029,1,InductanceCurrentA,Inductance A-phase current,I16,RO,A,0.1,
+0x602A,1,InductanceCurrentB,Inductance B-phase current,I16,RO,A,0.1,
+0x602B,1,InductanceCurrentC,Inductance C-phase current,I16,RO,A,0.1,
+0x602C,1,GridFrequency,Grid frequency,I16,RO,Hz,0.01,
+0x602D,1,GridPhaseSequence,Current grid phase sequence,I16,RO,,1,0 positive order; 1 negative order
+0x602E,1,PcsDeratingCoefficient,PCS derating coefficient,I16,RO,,1,Normal 4096; derating = value/4096 (software >= 5.13.0)
+0x602F,1,PcsDeratingMark,PCS derating mark,I16,RO,,1,0 normal; 1 IGBT overtemp derating; 2 ambient temp derating; 3 both (software >= 5.13.0)
+0x6030,1,AcActivePowerA,AC A-phase active power,I16,RO,kW,0.1,
+0x6031,1,AcActivePowerB,AC B-phase active power,I16,RO,kW,0.1,
+0x6032,1,AcActivePowerC,AC C-phase active power,I16,RO,kW,0.1,
+0x6033,1,AcApparentPowerA,AC A-phase apparent power,I16,RO,kVA,0.1,
+0x6034,1,AcApparentPowerB,AC B-phase apparent power,I16,RO,kVA,0.1,
+0x6035,1,AcApparentPowerC,AC C-phase apparent power,I16,RO,kVA,0.1,
+0x6036,1,AcReactivePowerA,AC A-phase reactive power,I16,RO,kvar,0.1,
+0x6037,1,AcReactivePowerB,AC B-phase reactive power,I16,RO,kvar,0.1,
+0x6038,1,AcReactivePowerC,AC C-phase reactive power,I16,RO,kvar,0.1,
+0x6039,1,AcTotalActivePower,AC output total active power,I16,RO,kW,0.1,Positive = discharge; negative = charge
+0x603A,1,AcTotalReactivePower,AC output total reactive power,I16,RO,kvar,0.1,Positive = inductive; negative = capacitive
+0x603B,1,AcTotalApparentPower,AC output total apparent power,I16,RO,kVA,0.1,
+0x603C,1,AcPowerFactor,AC power factor,I16,RO,,0.01,
+0x6050,1,TotalBusVoltage,Total bus voltage,I16,RO,V,0.1,
+0x6051,1,PositiveBusVoltage,Positive bus voltage,I16,RO,V,0.1,
+0x6052,1,NegativeBusVoltage,Negative bus voltage,I16,RO,V,0.1,
+0x6053,1,BatteryVoltage,Battery voltage,I16,RO,V,0.1,
+0x6054,1,BatteryCurrent,Battery current,I16,RO,A,0.1,
+0x6055,1,DcPower,DC power,I16,RO,kW,0.1,
+0x6056,1,TotalDcCurrent,Total DC current,I16,RO,A,0.1,For modules in parallel
+0x6057,1,WorkingCondition,Working condition,B16,RO,,1,Stop: all 0; startup: Bit0+Bit1; standby: Bit0+Bit2; running off-grid/DC source: Bit0+Bit3; running grid-connected: Bit0+Bit8; fault: Bit6
+0x6058,1,IgbtTemperature,IGBT temperature,I16,RO,℃,0.1,
+0x6059,1,AmbientTemperature,Ambient temperature,I16,RO,℃,0.1,
+0x605A,1,InductanceTemperature,Inductance temperature,I16,RO,℃,0.1,
+0x605B,1,ChargeDischargeMode,Current actual charge and discharge working mode,U16,RO,,1,1 AC current source; 0 DC voltage source
+0x605C,1,GridOffGridState,Grid-connected/off-grid state,U16,RO,,1,0 stop; 1 power on; 2 standby; 3 off-grid; 4 grid-connected; 5 fault; 6 debugging
+0x6070,16,ModuleSN,Module SN code,String,RO,,1,0x6070-0x607F; high byte = first char; ASCII

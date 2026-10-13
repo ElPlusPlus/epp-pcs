@@ -2,7 +2,8 @@ import asyncio
 import logging
 from datetime import datetime
 from pyepppcs import AsyncPcsClient
-from pyepppcs.defination.register_names import *
+from pyepppcs.definition.register_names import *
+from pyepppcs.definition.models import GridState, SourceMode
 
 
 # Silence pymodbus and asyncio noise, keep only application logs
@@ -10,9 +11,9 @@ logging.basicConfig(level=logging.WARNING)
 logging.getLogger("pyepppcs").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
-GRID_STATE = {0: "Stop", 1: "PowerOn", 2: "Standby", 3: "OffGrid", 4: "GridConnected", 5: "FAULT", 6: "Debug"}
-CHARGE_MODE = {0: "DC Voltage Source", 1: "AC Current Source"}
-OP_MODE     = {0: "DC Voltage Source", 1: "Current Source"}
+GRID_STATE  = {s.value: s.name for s in GridState}
+CHARGE_MODE = {m.value: m.name for m in SourceMode}
+OP_MODE     = CHARGE_MODE
 
 REGISTERS = [
     (module_sn_n,           "Module SN",          None),

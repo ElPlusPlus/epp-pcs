@@ -10,9 +10,10 @@ from pymodbus.client import AsyncModbusTcpClient, AsyncModbusSerialClient
 from typing import Union, Optional
 import logging
 
-from pyepppcs.defination import modbus_map
-from pyepppcs.defination.register_names import *
-from pyepppcs.defination.models import Result, ModbusType, ModbusAccess
+from pyepppcs.definition import modbus_map
+from pyepppcs.definition.register_names import *
+from pyepppcs.definition.models import Result, ModbusType, ModbusAccess
+from pyepppcs.definition.fault_codes import fault_bits_map, decode_fault_word
 from pyepppcs.utils import (
     convert_to_s16, convert_to_s32, convert_to_u32,
     decode_registers_to_chars, encode_string_to_registers,
@@ -174,14 +175,11 @@ class AsyncPcsClient:
             logger.error(f"{register_name} is read-only")
             return False
 
-        if isinstance(value, float) and reg.modbus_type not in (
+        # round() rather than int(): e.g. 2.3 / 0.1 == 22.999… must become 23
+        if isinstance(value, (int, float)) and reg.modbus_type not in (
             ModbusType.STRING, ModbusType.B16, ModbusType.E16
         ):
-            value = int(value / reg.gain)
-        elif isinstance(value, int) and reg.gain != 1 and reg.modbus_type not in (
-            ModbusType.STRING, ModbusType.B16, ModbusType.E16
-        ):
-            value = int(value / reg.gain)
+            value = round(value / reg.gain)
 
         # Encode signed integers into unsigned 16-bit for the wire
         if reg.modbus_type in (ModbusType.S16, ModbusType.I16) and value < 0:
@@ -254,3 +252,21 @@ class AsyncPcsClient:
             result = await self.get(name)
             status[name] = result.value if result else None
         return status
+
+    async def get_faults(self) -> dict:
+        """
+        Read all eight fault words (0x1700-0x1707) and decode the set bits.
+
+        Returns {register_name: [fault descriptions]} for every word that has
+        at least one bit set, or None for a word that could not be read.
+        """
+        faults = {}
+        for name in fault_bits_map:
+            result = await self.get(name)
+            if result is None:
+                faults[name] = None
+                continue
+            active = decode_fault_word(name, int(result.value, 2))
+            if active:
+                faults[name] = active
+        return faults
