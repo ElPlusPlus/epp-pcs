@@ -1,5 +1,5 @@
-from pyepppcs.definition.register_names import *
-from pyepppcs.definition.register_values import *
+from pypcs.definition.register_names import *
+from pypcs.definition.register_values import *
 
 modbus_map = {
     # AC Output Voltages & Currents

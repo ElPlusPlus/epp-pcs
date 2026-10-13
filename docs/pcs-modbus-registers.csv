@@ -51,14 +51,14 @@ Address,Count,Register name,Item (protocol V1.22),Data type,Access,Unit,Gain,Not
 0x1651,1,CvToFloatCurrent,Constant voltage to float charging current point,U16,RW,A,0.1,
 0x1653,1,FloatChargeVoltage,Battery float charge voltage point,U16,RW,V,0.1,
 0x1654,1,FloatToCcCurrent,Float charge to constant current point,U16,RW,A,0.1,
-0x1700,1,HwFaultWord1,Hardware fault word 1,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
-0x1701,1,HwFaultWord2,Hardware fault word 2,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
-0x1702,1,GridFaultWord,Grid fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
-0x1703,1,BusFaultWord,Bus fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
-0x1704,1,AcCapFaultWord,AC capacitor fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
-0x1705,1,SystemFaultWord,System fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
-0x1706,1,SwitchFaultWord,Switch fault word,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
-0x1707,1,OtherFaultWord,Other fault words,B16,RO,,1,Bit meanings in pyepppcs/definition/fault_codes.py
+0x1700,1,HwFaultWord1,Hardware fault word 1,B16,RO,,1,Bit meanings in pypcs/definition/fault_codes.py
+0x1701,1,HwFaultWord2,Hardware fault word 2,B16,RO,,1,Bit meanings in pypcs/definition/fault_codes.py
+0x1702,1,GridFaultWord,Grid fault word,B16,RO,,1,Bit meanings in pypcs/definition/fault_codes.py
+0x1703,1,BusFaultWord,Bus fault word,B16,RO,,1,Bit meanings in pypcs/definition/fault_codes.py
+0x1704,1,AcCapFaultWord,AC capacitor fault word,B16,RO,,1,Bit meanings in pypcs/definition/fault_codes.py
+0x1705,1,SystemFaultWord,System fault word,B16,RO,,1,Bit meanings in pypcs/definition/fault_codes.py
+0x1706,1,SwitchFaultWord,Switch fault word,B16,RO,,1,Bit meanings in pypcs/definition/fault_codes.py
+0x1707,1,OtherFaultWord,Other fault words,B16,RO,,1,Bit meanings in pypcs/definition/fault_codes.py
 0x2227,1,OffGridVoltage,Off-grid voltage setting,I16,RW,,1,4096 = 400 V line voltage; 3891 = 380 V
 0x501B,1,OperationMode,Module operation mode setting,U16,RW,,1,1 current source; 0 DC voltage source
 0x5021,1,ParallelModuleCount,Number of parallel modules,U16,RW,,1,

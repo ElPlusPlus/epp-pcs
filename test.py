@@ -1,14 +1,14 @@
 import asyncio
 import logging
 from datetime import datetime
-from pyepppcs import AsyncPcsClient
-from pyepppcs.definition.register_names import *
-from pyepppcs.definition.models import GridState, SourceMode
+from pypcs import AsyncPcsClient
+from pypcs.definition.register_names import *
+from pypcs.definition.models import GridState, SourceMode
 
 
 # Silence pymodbus and asyncio noise, keep only application logs
 logging.basicConfig(level=logging.WARNING)
-logging.getLogger("pyepppcs").setLevel(logging.WARNING)
+logging.getLogger("pypcs").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 GRID_STATE  = {s.value: s.name for s in GridState}
