@@ -1,4 +1,4 @@
-from pyepppcs.defination.models import ModbusRegister, ModbusType, ModbusUnit, ModbusAccess
+from pyepppcs.definition.models import ModbusRegister, ModbusType, ModbusUnit, ModbusAccess
 
 RO = ModbusAccess.RO
 RW = ModbusAccess.RW

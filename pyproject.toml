@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pysolinteg"
+name = "pyepppcs"
 version = "0.1.10"
 description = ""
 authors = ["Nithish Raja <153272518+iamnithishraja@users.noreply.github.com>"]

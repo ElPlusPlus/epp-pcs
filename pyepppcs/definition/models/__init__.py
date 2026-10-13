@@ -44,6 +44,23 @@ class ModbusUnit(Enum):
     MINUTE = "min"
 
 
+class GridState(Enum):
+    """0x605C Grid-connected/off-grid state"""
+    STOP = 0
+    POWER_ON = 1
+    STANDBY = 2
+    OFF_GRID = 3
+    GRID_CONNECTED = 4
+    FAULT = 5
+    DEBUG = 6
+
+
+class SourceMode(Enum):
+    """0x605B actual charge/discharge mode and 0x501B module operation mode"""
+    DC_VOLTAGE_SOURCE = 0
+    AC_CURRENT_SOURCE = 1
+
+
 class ModbusRegister:
     """Definition of a Modbus register including its address range, type, unit and function code"""
     def __init__(
