@@ -1,5 +1,5 @@
 """
-pyepppcs – Async Modbus client for the EPP PCS (Power Conversion System).
+pypcs – Async Modbus client for the EPP PCS (Power Conversion System).
 
 Physical interface : RS485 (A/B)
 Protocol           : Standard Modbus, FC03 read / FC06 write single register
@@ -10,11 +10,11 @@ from pymodbus.client import AsyncModbusTcpClient, AsyncModbusSerialClient
 from typing import Union, Optional
 import logging
 
-from pyepppcs.definition import modbus_map
-from pyepppcs.definition.register_names import *
-from pyepppcs.definition.models import Result, ModbusType, ModbusAccess
-from pyepppcs.definition.fault_codes import fault_bits_map, decode_fault_word
-from pyepppcs.utils import (
+from pypcs.definition import modbus_map
+from pypcs.definition.register_names import *
+from pypcs.definition.models import Result, ModbusType, ModbusAccess
+from pypcs.definition.fault_codes import fault_bits_map, decode_fault_word
+from pypcs.utils import (
     convert_to_s16, convert_to_s32, convert_to_u32,
     decode_registers_to_chars, encode_string_to_registers,
     split_s32_to_registers, split_u32_to_registers,

@@ -1,4 +1,4 @@
-from pyepppcs.definition.register_names import *
+from pypcs.definition.register_names import *
 
 # Bit meanings per PCS Communication Protocol V1.22, section 5.1.
 # 1 = fault, 0 = normal; bits not listed are reserved.
