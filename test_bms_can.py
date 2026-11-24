@@ -1,4 +1,4 @@
-"""Read the module serial number and the BMS/CAN setting registers.
+"""Read the module serial number, the BMS/CAN setting registers and 0x0C00.
 
 Usage:
     python test_bms_can.py <ip> [--port 502]
@@ -23,6 +23,12 @@ REGISTERS = [
     (harmonic_control_config4_n,      "Harmonic Control Configuration 4"),
 ]
 
+# Registers without a library definition yet (meaning/type unknown):
+# read raw and shown as decimal, hex and binary.
+RAW_REGISTERS = [
+    (0x0C00, "Unknown (0x0C00)"),
+]
+
 
 async def read_registers(host: str, port: int) -> int:
     client = AsyncPcsClient(host=host, port=port)
@@ -40,6 +46,15 @@ async def read_registers(host: str, port: int) -> int:
                 failures += 1
             else:
                 print(f"0x{address:04X}  {label:<32} {result.value}")
+
+        for address, label in RAW_REGISTERS:
+            raw = await client.read_register(address, 1)
+            if raw is None:
+                print(f"0x{address:04X}  {label:<32} ERROR: read failed")
+                failures += 1
+            else:
+                v = raw[0]
+                print(f"0x{address:04X}  {label:<32} {v} (0x{v:04X}, {v:016b})")
         return 1 if failures else 0
     finally:
         await client.close()
@@ -47,7 +62,7 @@ async def read_registers(host: str, port: int) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Read module SN, BMS manufacturer info and CAN baud rate"
+        description="Read module SN, BMS/CAN settings, 0x0206 and 0x0C00"
     )
     parser.add_argument("ip", help="IP address of the PCS")
     parser.add_argument("--port", type=int, default=502, help="Modbus TCP port (default: 502)")
