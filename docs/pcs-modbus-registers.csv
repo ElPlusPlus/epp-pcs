@@ -3,7 +3,7 @@ Address,Count,Register name,Item (protocol V1.22),Data type,Access,Unit,Gain,Not
 0x0189,1,PowerFactorA,A-phase power factor,I16,RO,,0.01,
 0x018A,1,PowerFactorB,B-phase power factor,I16,RO,,0.01,
 0x018B,1,PowerFactorC,C-phase power factor,I16,RO,,0.01,
-0x0206,1,HarmonicControlConfig4,Harmonic control configuration 4,B16,RW,,1,Bitfield; Bit14 set for BMS/CAN non-standard setup
+0x0206,1,HarmonicControlConfig4,Harmonic control configuration 4,B16,RW,,1,Bitfield; Bit14 (Reserved in host tool) set by vendor BMS/CAN setup procedure
 0x0291,1,PowerOnOff,Power-on/power-off instruction,I16,RW,,1,Write 1 on; write 0 off
 0x02A6,1,SetPhaseAActivePower,A-phase active power setting,I16,RW,kW,0.1,
 0x02A7,1,SetPhaseAReactivePower,A-phase reactive power setting,I16,RW,kvar,0.1,
@@ -14,6 +14,36 @@ Address,Count,Register name,Item (protocol V1.22),Data type,Access,Unit,Gain,Not
 0x0900,1,InsulationDetectionEnable,Insulation detection enabled,I16,RW,,1,Write 1 to start detection; auto-resets (software >= 5.13.0)
 0x0913,1,InsulationRx,Insulation detection value Rx,U16,RO,kΩ,1,
 0x0914,1,InsulationRy,Insulation detection value Ry,U16,RO,kΩ,1,
+0x0C00,1,BmsVoltage,BMS voltage,I16,RO,,1,Unit/gain not documented
+0x0C01,1,BmsCurrent,BMS current,I16,RO,,1,Unit/gain not documented
+0x0C02,1,BmsTemperature,BMS temperature,I16,RO,,1,Unit/gain not documented
+0x0C03,1,BmsSoc,BMS SOC,I16,RO,,1,Unit/gain not documented
+0x0C04,1,BmsSoh,BMS SOH,I16,RO,,1,Unit/gain not documented
+0x0C05,1,BmsChargeCurrentLimit,BMS charge current limit,I16,RO,,1,Unit/gain not documented
+0x0C06,1,BmsDischargeCurrentLimit,BMS discharge current limit,I16,RO,,1,Unit/gain not documented
+0x0C07,1,BmsChargeVoltageLimit,BMS charge voltage limit,I16,RO,,1,Unit/gain not documented
+0x0C08,1,BmsDischargeVoltageLimit,BMS discharge voltage limit,I16,RO,,1,Unit/gain not documented
+0x0C09,1,BmsMaxChargingPower,BMS maximum charging power,I16,RO,,1,Unit/gain not documented
+0x0C0A,1,BmsMaxDischargingPower,BMS maximum discharging power,I16,RO,,1,Unit/gain not documented
+0x0C0B,1,BmsChargedEnergy,BMS charged energy,I16,RO,,1,Unit/gain not documented
+0x0C0C,1,BmsDischargedEnergy,BMS discharged energy,I16,RO,,1,Unit/gain not documented
+0x0C0D,1,BmsStatus,BMS status,U16,RO,,1,Unit/gain not documented
+0x0C0E,1,BmsFaultStatus1,BMS fault status 1,U16,RO,,1,Unit/gain not documented
+0x0C0F,1,BmsFaultStatus2,BMS fault status 2,U16,RO,,1,Unit/gain not documented
+0x0C10,1,BmsFaultStatus3,BMS fault status 3,U16,RO,,1,Unit/gain not documented
+0x0C11,1,BmsCellMaxVoltage,BMS cell maximum voltage,I16,RO,,1,Unit/gain not documented
+0x0C12,1,BmsCellMinVoltage,BMS cell minimum voltage,I16,RO,,1,Unit/gain not documented
+0x0C13,1,BmsCellMaxTemperature,BMS cell maximum temperature,I16,RO,,1,Unit/gain not documented
+0x0C14,1,BmsCellMinTemperature,BMS cell minimum temperature,I16,RO,,1,Unit/gain not documented
+0x0C15,1,BmsCellMaxSoc,BMS cell maximum SOC,I16,RO,,1,Unit/gain not documented
+0x0C16,1,BmsCellMinSoc,BMS cell minimum SOC,I16,RO,,1,Unit/gain not documented
+0x0C17,1,BmsBatteryStatusInfo,BMS battery status information,U16,RO,,1,Unit/gain not documented
+0x0C18,1,BmsCommStatusInfo,BMS communication status information,U16,RO,,1,Unit/gain not documented
+0x0C19,1,BmsCellChargeVoltageLimit,BMS cell charge voltage limit,I16,RO,,1,Unit/gain not documented
+0x0C1A,1,BmsCellDischargeVoltageLimit,BMS cell discharge voltage limit,I16,RO,,1,Unit/gain not documented
+0x0C1B,1,BmsCellChargeVoltageRecovery,BMS cell allowed charge voltage recovery,I16,RO,,1,Unit/gain not documented
+0x0C1C,1,BmsCellDischargeVoltageRecovery,BMS cell allowed discharge voltage recovery,I16,RO,,1,Unit/gain not documented
+0x0C50,1,BmsChargeCurrentLimit0C50,BMS charge current limit (0x0C50),U16,RO,,1,Unit/gain not documented
 0x0C52,1,BmsManufacturerInfo,BMS Manufacturer Information,U16,RW,,1,
 0x0C56,1,CanBaudRateNonStd,CAN Baud Rate (Non-standard Setting),U16,RW,,1,
 0x0E00,1,MainContactorCommandStatus,Main contactor command status,B16,RO,,1,
