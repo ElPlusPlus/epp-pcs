@@ -93,6 +93,7 @@ modbus_map = {
     # BMS / CAN Settings
     bms_manufacturer_info_n: bms_manufacturer_info,
     can_baud_rate_non_std_n: can_baud_rate_non_std,
+    harmonic_control_config4_n: harmonic_control_config4,
 
     # Main Contactor
     main_contactor_command_status_n: main_contactor_command_status,

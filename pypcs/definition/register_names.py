@@ -89,6 +89,7 @@ other_fault_word_n = "OtherFaultWord"
 # ─── Read/Write: BMS / CAN Settings ──────────────────────────────────────────
 bms_manufacturer_info_n = "BmsManufacturerInfo"
 can_baud_rate_non_std_n = "CanBaudRateNonStd"
+harmonic_control_config4_n = "HarmonicControlConfig4"
 
 # ─── Main Contactor ──────────────────────────────────────────────────────────
 main_contactor_command_status_n = "MainContactorCommandStatus"

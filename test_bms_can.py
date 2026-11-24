@@ -13,12 +13,14 @@ from pypcs.definition.register_names import (
     module_sn_n,
     bms_manufacturer_info_n,
     can_baud_rate_non_std_n,
+    harmonic_control_config4_n,
 )
 
 REGISTERS = [
     (module_sn_n,                     "Module SN"),
     (bms_manufacturer_info_n,         "BMS Manufacturer Information"),
     (can_baud_rate_non_std_n,         "CAN Baud Rate (Non-standard)"),
+    (harmonic_control_config4_n,      "Harmonic Control Configuration 4"),
 ]
 
 
