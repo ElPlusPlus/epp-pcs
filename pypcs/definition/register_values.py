@@ -105,11 +105,46 @@ system_fault_word   = ModbusRegister(0x1705, 1, 3, ModbusType.B16, ModbusUnit.NO
 switch_fault_word   = ModbusRegister(0x1706, 1, 3, ModbusType.B16, ModbusUnit.NONE, RO, gain=1)
 other_fault_word    = ModbusRegister(0x1707, 1, 3, ModbusType.B16, ModbusUnit.NONE, RO, gain=1)
 
+# ─── Read-Only: BMS Parameters ───────────────────────────────────────────────
+# 0x0C00-0x0C1C, 0x0C50  FC3. Values reported by the BMS to the PCS.
+# Units and gain not documented yet: raw values (gain=1).
+bms_voltage                         = ModbusRegister(0x0C00, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_current                         = ModbusRegister(0x0C01, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_temperature                     = ModbusRegister(0x0C02, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_soc                             = ModbusRegister(0x0C03, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_soh                             = ModbusRegister(0x0C04, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_charge_current_limit            = ModbusRegister(0x0C05, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_discharge_current_limit         = ModbusRegister(0x0C06, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_charge_voltage_limit            = ModbusRegister(0x0C07, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_discharge_voltage_limit         = ModbusRegister(0x0C08, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_max_charging_power              = ModbusRegister(0x0C09, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_max_discharging_power           = ModbusRegister(0x0C0A, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_charged_energy                  = ModbusRegister(0x0C0B, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_discharged_energy               = ModbusRegister(0x0C0C, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_status                          = ModbusRegister(0x0C0D, 1, 3, ModbusType.U16, ModbusUnit.NONE, RO, gain=1)
+bms_fault_status1                   = ModbusRegister(0x0C0E, 1, 3, ModbusType.U16, ModbusUnit.NONE, RO, gain=1)
+bms_fault_status2                   = ModbusRegister(0x0C0F, 1, 3, ModbusType.U16, ModbusUnit.NONE, RO, gain=1)
+bms_fault_status3                   = ModbusRegister(0x0C10, 1, 3, ModbusType.U16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_max_voltage                = ModbusRegister(0x0C11, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_min_voltage                = ModbusRegister(0x0C12, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_max_temperature            = ModbusRegister(0x0C13, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_min_temperature            = ModbusRegister(0x0C14, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_max_soc                    = ModbusRegister(0x0C15, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_min_soc                    = ModbusRegister(0x0C16, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_battery_status_info             = ModbusRegister(0x0C17, 1, 3, ModbusType.U16, ModbusUnit.NONE, RO, gain=1)
+bms_comm_status_info                = ModbusRegister(0x0C18, 1, 3, ModbusType.U16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_charge_voltage_limit       = ModbusRegister(0x0C19, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_discharge_voltage_limit    = ModbusRegister(0x0C1A, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_charge_voltage_recovery    = ModbusRegister(0x0C1B, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_cell_discharge_voltage_recovery = ModbusRegister(0x0C1C, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+bms_charge_current_limit_0c50       = ModbusRegister(0x0C50, 1, 3, ModbusType.U16, ModbusUnit.NONE, RO, gain=1)
+
 # ─── Read/Write: BMS / CAN Settings ──────────────────────────────────────────
 # 0x0C52-0x0C56  U16, FC3
 bms_manufacturer_info = ModbusRegister(0x0C52, 1, 3, ModbusType.U16, ModbusUnit.NONE, RW, gain=1)
 can_baud_rate_non_std = ModbusRegister(0x0C56, 1, 3, ModbusType.U16, ModbusUnit.NONE, RW, gain=1)
-# Bitfield: Bit14 enables the BMS protocol selected via 0x0C52 (non-standard)
+# Bitfield. Bit14 is labelled "Reserved" in the host tool; the vendor's
+# BMS/CAN setup procedure sets it (see configure_bms_can.py).
 harmonic_control_config4 = ModbusRegister(0x0206, 1, 3, ModbusType.B16, ModbusUnit.NONE, RW, gain=1)
 
 # ─── Main Contactor ──────────────────────────────────────────────────────────
