@@ -13,6 +13,13 @@ Address,Count,Register name,Item (protocol V1.22),Data type,Access,Unit,Gain,Not
 0x0900,1,InsulationDetectionEnable,Insulation detection enabled,I16,RW,,1,Write 1 to start detection; auto-resets (software >= 5.13.0)
 0x0913,1,InsulationRx,Insulation detection value Rx,U16,RO,kΩ,1,
 0x0914,1,InsulationRy,Insulation detection value Ry,U16,RO,kΩ,1,
+0x0C52,1,BmsManufacturerInfo,BMS Manufacturer Information,U16,RW,,1,
+0x0C56,1,CanBaudRateNonStd,CAN Baud Rate (Non-standard Setting),U16,RW,,1,
+0x0E00,1,MainContactorCommandStatus,Main contactor command status,B16,RO,,1,
+0x0E01,1,MainContactorStateMachine,Main contactor state machine,I16,RO,,1,
+0x0E02,1,MainContactorStatus,Main contactor status,I16,RO,,1,
+0x0E03,1,MainContactorClosingTime,Main contactor closing time setting,I16,RW,,1,
+0x0E04,1,MainContactorOpeningTime,Main contactor opening time setting,I16,RW,,1,
 0x0D10,1,BusVoltage,Bus voltage setting,U16,RW,V,0.1,"DC voltage source mode, single module"
 0x0D16,1,DcSourceBusVoltage,DC source bus voltage setting,U16,RW,V,0.1,"DC voltage source mode, parallel operation"
 0x0D57,1,SetActivePower,Set the active charge/discharge power,I16,RW,kW,0.1,Positive = discharge; negative = charge (e.g. -200 = 20 kW charge)

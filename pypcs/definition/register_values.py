@@ -105,6 +105,19 @@ system_fault_word   = ModbusRegister(0x1705, 1, 3, ModbusType.B16, ModbusUnit.NO
 switch_fault_word   = ModbusRegister(0x1706, 1, 3, ModbusType.B16, ModbusUnit.NONE, RO, gain=1)
 other_fault_word    = ModbusRegister(0x1707, 1, 3, ModbusType.B16, ModbusUnit.NONE, RO, gain=1)
 
+# ─── Read/Write: BMS / CAN Settings ──────────────────────────────────────────
+# 0x0C52-0x0C56  U16, FC3
+bms_manufacturer_info = ModbusRegister(0x0C52, 1, 3, ModbusType.U16, ModbusUnit.NONE, RW, gain=1)
+can_baud_rate_non_std = ModbusRegister(0x0C56, 1, 3, ModbusType.U16, ModbusUnit.NONE, RW, gain=1)
+
+# ─── Main Contactor ──────────────────────────────────────────────────────────
+# 0x0E00-0x0E04  FC3
+main_contactor_command_status = ModbusRegister(0x0E00, 1, 3, ModbusType.B16, ModbusUnit.NONE, RO, gain=1)
+main_contactor_state_machine  = ModbusRegister(0x0E01, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+main_contactor_status         = ModbusRegister(0x0E02, 1, 3, ModbusType.I16, ModbusUnit.NONE, RO, gain=1)
+main_contactor_closing_time   = ModbusRegister(0x0E03, 1, 3, ModbusType.I16, ModbusUnit.NONE, RW, gain=1)
+main_contactor_opening_time   = ModbusRegister(0x0E04, 1, 3, ModbusType.I16, ModbusUnit.NONE, RW, gain=1)
+
 # ─── Read/Write: Power Setpoints ─────────────────────────────────────────────
 # positive = discharge, negative = charge
 set_active_power   = ModbusRegister(0x0D57, 1, 3, ModbusType.I16, ModbusUnit.KW,   RW, gain=0.1)
