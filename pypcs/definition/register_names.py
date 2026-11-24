@@ -86,6 +86,17 @@ system_fault_word_n = "SystemFaultWord"
 switch_fault_word_n = "SwitchFaultWord"
 other_fault_word_n = "OtherFaultWord"
 
+# ─── Read/Write: BMS / CAN Settings ──────────────────────────────────────────
+bms_manufacturer_info_n = "BmsManufacturerInfo"
+can_baud_rate_non_std_n = "CanBaudRateNonStd"
+
+# ─── Main Contactor ──────────────────────────────────────────────────────────
+main_contactor_command_status_n = "MainContactorCommandStatus"
+main_contactor_state_machine_n = "MainContactorStateMachine"
+main_contactor_status_n = "MainContactorStatus"
+main_contactor_closing_time_n = "MainContactorClosingTime"
+main_contactor_opening_time_n = "MainContactorOpeningTime"
+
 # ─── Read/Write: Power Setpoints ─────────────────────────────────────────────
 set_active_power_n = "SetActivePower"
 set_reactive_power_n = "SetReactivePower"

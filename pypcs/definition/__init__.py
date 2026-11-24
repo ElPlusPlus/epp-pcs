@@ -90,6 +90,17 @@ modbus_map = {
     switch_fault_word_n:  switch_fault_word,
     other_fault_word_n:   other_fault_word,
 
+    # BMS / CAN Settings
+    bms_manufacturer_info_n: bms_manufacturer_info,
+    can_baud_rate_non_std_n: can_baud_rate_non_std,
+
+    # Main Contactor
+    main_contactor_command_status_n: main_contactor_command_status,
+    main_contactor_state_machine_n:  main_contactor_state_machine,
+    main_contactor_status_n:         main_contactor_status,
+    main_contactor_closing_time_n:   main_contactor_closing_time,
+    main_contactor_opening_time_n:   main_contactor_opening_time,
+
     # Power Setpoints
     set_active_power_n:           set_active_power,
     set_reactive_power_n:         set_reactive_power,
