@@ -109,6 +109,8 @@ other_fault_word    = ModbusRegister(0x1707, 1, 3, ModbusType.B16, ModbusUnit.NO
 # 0x0C52-0x0C56  U16, FC3
 bms_manufacturer_info = ModbusRegister(0x0C52, 1, 3, ModbusType.U16, ModbusUnit.NONE, RW, gain=1)
 can_baud_rate_non_std = ModbusRegister(0x0C56, 1, 3, ModbusType.U16, ModbusUnit.NONE, RW, gain=1)
+# Bitfield: Bit14 enables the BMS protocol selected via 0x0C52 (non-standard)
+harmonic_control_config4 = ModbusRegister(0x0206, 1, 3, ModbusType.B16, ModbusUnit.NONE, RW, gain=1)
 
 # ─── Main Contactor ──────────────────────────────────────────────────────────
 # 0x0E00-0x0E04  FC3

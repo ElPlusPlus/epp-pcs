@@ -3,6 +3,7 @@ Address,Count,Register name,Item (protocol V1.22),Data type,Access,Unit,Gain,Not
 0x0189,1,PowerFactorA,A-phase power factor,I16,RO,,0.01,
 0x018A,1,PowerFactorB,B-phase power factor,I16,RO,,0.01,
 0x018B,1,PowerFactorC,C-phase power factor,I16,RO,,0.01,
+0x0206,1,HarmonicControlConfig4,Harmonic control configuration 4,B16,RW,,1,Bitfield; Bit14 set for BMS/CAN non-standard setup
 0x0291,1,PowerOnOff,Power-on/power-off instruction,I16,RW,,1,Write 1 on; write 0 off
 0x02A6,1,SetPhaseAActivePower,A-phase active power setting,I16,RW,kW,0.1,
 0x02A7,1,SetPhaseAReactivePower,A-phase reactive power setting,I16,RW,kvar,0.1,
